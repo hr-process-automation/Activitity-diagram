@@ -1,0 +1,96 @@
+Person table - person
+
+create table person
+(E_code int not null primary key unique check(E_code>100),
+First_Name varchar(50) not null,
+Last_Name varchar(50) not null,
+Email varchar(100) not null,
+DOB Date not null,
+password varchar(40) not null,
+gender varchar(6) not null,
+post varchar(20) not null,
+mobile_no varchar(10) not null);
+
+insert into person(E_code,First_Name,Last_Name,Email,DOB,password,gender,post,mobile_no) values
+(101,'Neeti','Malhotra','neetimalhotra41@gmail.com','1995-01-29','neeti','female','software trainee','8851029376');
+
+
+
+Empolyee table - empolyee
+
+create table empolyee
+(E_code int not null,
+foreign key fk_ee(E_code)
+references person(E_code),
+skills varchar(50),
+status varchar(50));
+
+insert into empolyee(E_code,skills,status)values
+(101,'java','software traniee');
+
+
+
+HR Table - HR
+
+create table HR
+(department varchar(20),
+E_code int not null,
+Foreign key fk_ecode(E_code)
+references person(E_code));
+
+insert into HR(department,E_code) values
+('L&D',101);
+
+
+
+Attendence Table - attendence
+
+create table attendence
+(E_code int not null,
+foreign key fk_ee(E_code)
+references person(E_code),
+mark int,
+date Date,
+time varchar(20));
+
+ insert into attendence(E_code,mark,date,time)values
+ (101,1,'1995-01-29','19:20:10');
+
+
+
+Salary table - salary
+
+create table salary
+(Basic_pay DECIMAL(7 , 2),
+Incentives decimal(3 , 2));
+
+ insert into salary(Basic_pay,Incentives) values
+ ('10000','500');
+
+
+
+Leave table - Leaves
+
+create table Leaves
+(date Date,
+status varchar(10),
+reason varchar(50),
+E_code int not null,
+Foreign key fk_ecode(E_code)
+references person(E_code));
+
+insert into leaves(date,status,reason,E_code) values
+('2019-01-12','Apply','Not Well','101');
+
+
+
+Performance Table - perform
+
+create table perform
+(E_code int not null,
+foreign key fk_ee(E_code)
+references person(E_code),
+review varchar(50));
+
+insert into perform(E_code,review)values
+(101,'good');
