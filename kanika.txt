@@ -1,0 +1,27 @@
+﻿create table contacts
+(contact_id int(11) not null auto_increment,
+last_name varchar(30) not null,
+first_name varchar(25),
+birthday date,
+created_date date,
+created_by varchar(30),
+constraint contacts_pk primary key(contact_id)
+);
+
+
+create table suppliers
+ (supplier_id int(11) not null auto_increment,
+ supplier_name varchar(30) not null,
+ account_rep varchar(30) not null default 'TBD',
+ constraint suppliers_pk primary key(supplier_id)
+ );
+
+
+select * from contacts2 where last_name = 'johnson';
+
+select * from contacts2 where website1=website2;
+
+ select * from contacts2 where website1<=>website2;
+
+select * from contacts2 where last_name <> 'johnson';
+select * from contacts2 where last_name != 'johnson';
